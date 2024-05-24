@@ -1,0 +1,24 @@
+.HomePage{
+    display: flex;
+    height: 100%;
+
+    .textContainer{
+        flex: 3;
+
+        .wrapper{
+            padding-right: 100px;
+        }
+    }
+
+    .imgContainer{
+        flex: 2;
+        background-color: var(--color-right);
+        position: relative;
+
+        img{
+            width: 120%;
+            position: absolute;
+            right: 0;
+        }
+    }
+}
