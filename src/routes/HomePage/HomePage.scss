@@ -6,7 +6,30 @@
         flex: 3;
 
         .wrapper{
-            padding-right: 100px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+            height: 100%;
+
+            .title{
+                font-size: 48px;
+            }
+
+            .boxes{
+                display: flex;
+                justify-content: space-between;
+
+                h1{
+                    font-size: 28px;
+                }
+
+                h2{
+                    font-size: 20px;
+                    font-weight: 300;
+                }
+            }
         }
     }
 
@@ -16,7 +39,7 @@
         position: relative;
 
         img{
-            width: 120%;
+            width: 100%;
             position: absolute;
             right: 0;
         }
