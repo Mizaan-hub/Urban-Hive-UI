@@ -1,11 +1,5 @@
 @import "/src/responsive.scss";
 
-:root{
-    --color-btn: #fece51;
-    --color-right: #fcf5f3;
-    --transition: all 400ms ease;
-}
-
 nav{
     display: flex;
     justify-content: space-between;
