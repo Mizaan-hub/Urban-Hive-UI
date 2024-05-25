@@ -30,7 +30,6 @@ function HomePage (){
             </div>
 
             <div className="imgContainer">
-                {/* <img src="/public/assets/images/bg.png" alt="" /> */}
                 <img src="/public/assets/pics/Urban Hive.gif" alt="" />
             </div>
 
