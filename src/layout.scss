@@ -18,17 +18,17 @@
     flex-direction: column;
 
     @include laptops{
-        background: rgb(229, 210, 175);
+        // background: rgb(229, 210, 175);
         max-width: 1000px;
     }
 
     @include tablets{
-        background: rgb(168, 238, 168);
+        // background: rgb(168, 238, 168);
         max-width: 700px;
     }
 
     @include mobiles{
-        background: rgb(206, 176, 234);
+        // background: rgb(206, 176, 234);
         max-width: 400px;
     }
 
