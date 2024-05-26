@@ -1,3 +1,18 @@
 .ListPage{
-    
+    display: flex;
+    height: 100%;
+
+    .listContainer{
+        flex: 3;
+
+
+        .wrapper{
+            padding-right: 50px;
+        }
+    }
+
+    .mapContainer{
+        flex: 2;
+        background-color: var(--color-right);
+    }
 }
