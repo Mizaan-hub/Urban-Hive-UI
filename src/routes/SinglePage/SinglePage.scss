@@ -1,3 +1,83 @@
 .SinglePage{
+    display: flex;
+    height: 100%;
+
+    .details{
+        flex: 3;
+
+        .wrapper{
+            padding-right: 50px;
+
+            .info{
+                margin-top: 20px;
+
+                .top{
+                    display: flex;
+                    justify-content: space-between;
+                    .post{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        h1{
+                            font-weight: 400;
+                        }
+                        .address{
+                            display: flex;
+                            gap: 5px;
+                            align-items: center;
+                            font-size: 16px;
+                            color: #888;
+
+                            img{
+                                width: 14px;
+                                height: 14px;
+                            }
+                        }
+                        .price{
+                            padding: 5px;
+                            background-color: var(--color-price);
+                            max-width: max-content;
+                            border-radius: 5px;
+                            font-size: 20px;
+                            font-weight: 300;
+                        }
+                    }
+
+                    .user{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        gap: 20px;
+                        padding: 0px 50px;
+                        background-color: rgba(254,205,81,0.250);
+                        border-radius: 20px;
+
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                .bottom{
+                    margin-top: 20px;
+                    color: #555;
+                    // line-height: 20px;
+                }
+            }
+        }
+    }
     
+    .features{
+        flex: 2;
+        background-color: var(--color-right);
+        // height: 100vh;
+        .wrapper{
+            padding: 0px 20px;
+        }
+    }
 }

@@ -54,7 +54,7 @@
         .price{
             font-size: 20px;
             font-weight: 300;
-            background-color: rgba(254,205,81,0.450);
+            background-color: var(--color-price);
             width: max-content;
             border-radius: 5px;
             padding: 5px;
