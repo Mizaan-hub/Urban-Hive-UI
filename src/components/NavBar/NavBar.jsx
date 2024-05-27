@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./NavBar.scss"
+import { Link } from "react-router-dom";
 
 function NavBar(){
 
@@ -9,11 +10,11 @@ function NavBar(){
         <nav>
             <div className="left">
 
-                <a href="/" className="logo">
+                <Link href="/" className="logo">
                     <img src="/public/assets/images/logo.png" alt="" />
                     <span>Urban Hive</span>
-                </a>
-                <a href="/">Home</a>
+                </Link>
+                <Link href="/">Home</Link>
                 <a href="/">About</a>
                 <a href="/">Contact</a>
                 <a href="/">Agents</a>
@@ -29,7 +30,7 @@ function NavBar(){
                     <img src="/public/assets/images/menu.png" alt="" onClick={() => setOpen(!open)} />
                 </div>
                 <div className={open ? "menu active" : "menu"}>
-                    <a href="/">Home</a>
+                    <Link to="/">Home</Link>
                     <a href="/">About</a>
                     <a href="/">Contact</a>
                     <a href="/">Agents</a>
