@@ -30,7 +30,8 @@
             }
 
             @include mobiles{
-                max-width: 400px;
+                max-width: auto;
+                padding-right: 0;
             }
         }
     }
