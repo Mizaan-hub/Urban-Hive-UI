@@ -1,3 +1,5 @@
+@import '../../responsive.scss';
+
 .Filter{
     display: flex;
     flex-direction: column;
@@ -37,9 +39,17 @@
         justify-content: space-between;
         gap: 10px;
 
+        @include mobiles{
+            flex-direction: column;
+
+            input, select{
+                width: 100%;
+            }
+        }
+
         button{
             width: 80px;
-            padding: 10p;
+            padding: 10px;
             border: none;
             background-color: var(--color-btn);
             cursor: pointer;
