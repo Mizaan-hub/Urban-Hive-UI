@@ -28,7 +28,7 @@ function NavBar(){
                 {user ? (
                     <div className="user">
                         <img src="/public/assets/pics/lana-profile-2.jpg" alt="" />
-                        <span>Lana Rhoades</span>
+                        <span className="username">Lana Rhoades</span>
                         <Link to="/profile" className="profile">
                             <div className="notifications">3</div>
                             <span>Profile</span>

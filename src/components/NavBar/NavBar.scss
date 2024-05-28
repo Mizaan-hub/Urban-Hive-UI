@@ -77,7 +77,15 @@ nav{
                 margin-right: 20px;
             }
             
+
             span{
+
+                &.username{
+                    @include tablets{
+                        display: none;
+                    }
+                }
+                
                 @include mobiles{
                     display: none;
                 }
