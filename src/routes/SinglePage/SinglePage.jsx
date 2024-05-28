@@ -2,6 +2,7 @@ import Slider from '../../components/Slider/Slider'
 import Map from '../../components/Map/Map'
 import './SinglePage.scss'
 import {singlePostData, userData} from "../../lib/dummydata"
+import { Link } from 'react-router-dom'
 
 function SinglePage (){
     return(
@@ -21,10 +22,10 @@ function SinglePage (){
                                     £ {singlePostData.price}
                                 </div>
                             </div>
-                            <div className="user">
-                                <img src={userData.img} alt="" />
-                                <span>{userData.name}</span>
-                            </div>
+                            <Link to="/profile" className="user">
+                                    <img src={userData.img} alt="" />
+                                    <span>{userData.name}</span>
+                            </Link>
                         </div>
                         <div className="bottom">
                             {singlePostData.description}

@@ -6,6 +6,8 @@ function NavBar(){
 
     const [open, setOpen] = useState(false);
 
+    const user = true;
+
     return(
         <nav>
             <div className="left">
@@ -23,8 +25,21 @@ function NavBar(){
 
             <div className="right">
 
-                <a href="/">Sign In</a>
-                <a href="/" className="register">Sign Up</a>
+                {user ? (
+                    <div className="user">
+                        <img src="/public/assets/pics/lana-profile-2.jpg" alt="" />
+                        <span>Lana Rhoades</span>
+                        <Link to="/profile" className="profile">
+                            <div className="notifications">3</div>
+                            <span>Profile</span>
+                        </Link>
+                    </div>
+                ):(
+                    <>
+                    <a href="/">Sign In</a>
+                    <a href="/" className="register">Sign Up</a>
+                    </>
+                    )}
 
                 <div className="menuIcon">
                     <img src="/public/assets/images/menu.png" alt="" onClick={() => setOpen(!open)} />
@@ -34,8 +49,14 @@ function NavBar(){
                     <a href="/">About</a>
                     <a href="/">Contact</a>
                     <a href="/">Agents</a>
+                    {user? (
+                        <Link to="/profile">Profile</Link>
+                    ):(
+                    <>
                     <a href="/">Sign In</a>
                     <a href="/">Sign Up</a>
+                    </>
+                    )}
                 </div>
 
             </div>
