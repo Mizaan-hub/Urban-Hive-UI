@@ -18,7 +18,7 @@ function SinglePage (){
                                     <span>{singlePostData.address}</span>
                                 </div>
                                 <div className="price">
-                                    ₹ {singlePostData.price}
+                                    £ {singlePostData.price}
                                 </div>
                             </div>
                             <div className="user">
