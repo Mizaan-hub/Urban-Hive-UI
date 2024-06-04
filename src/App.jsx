@@ -8,6 +8,7 @@ import HomePage from './routes/HomePage/HomePage';
 import SinglePage from "./routes/SinglePage/SinglePage";
 import ProfilePage from "./routes/ProfilePage/ProfilePage";
 import LogIn from "./routes/LogIn/LogIn";
+import Register from "./routes/Register/Register";
 
 function App() {
 
@@ -36,6 +37,9 @@ function App() {
         {
           path:"/login",
           element: <LogIn/>
+        },{
+          path:"/register",
+          element: <Register/>
         }
       ]
     }
