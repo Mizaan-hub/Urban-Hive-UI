@@ -1,14 +1,5 @@
 @import "../../responsive.scss";
 
-:root{
-    --color-btn: #fece51;
-    --color-right: #fcf5f3;
-    --color-price: rgba(254,205,81,0.450);
-    --color-template: rgba(254,205,81,0.250);
-    --transition: all 400ms ease;
-}
-
-
 .layout{
     height: 100vh;
     max-width: 1100px;
