@@ -71,6 +71,16 @@
                     align-items: center;
                     gap: 10px;
                 }
+
+                button{
+                    width: 100px;
+                    background-color: teal;
+                    border: none;
+                    padding: 10px 20px;
+                    color: white;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
             }
         }
     }

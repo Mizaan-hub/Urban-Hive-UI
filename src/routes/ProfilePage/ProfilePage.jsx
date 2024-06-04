@@ -22,6 +22,7 @@ function ProfilePage (){
                         <span>
                             E-Mail: <b>lana69@gmail.com</b>
                         </span>
+                        <button>Log Out</button>
                     </div>
                     <div className="title">
                         <h1>My List</h1>

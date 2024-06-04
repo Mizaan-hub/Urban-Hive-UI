@@ -1,23 +1,61 @@
-import { Link } from 'react-router-dom'
-import './LogIn.scss'
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"
+import "./LogIn.scss";
+import { useState } from "react";
+import apiRequest from "../../lib/apiRequest";
 
-function LogIn (){
-    return(
-        <div className='LogIn'>
-            <div className="formContainer">
-                <form >
-                    <h1>Welcome Back</h1>
-                    <input type="text" name="username" placeholder='Username' />
-                    <input type="text" name="password" placeholder='Password' />
-                    <button>Log In</button>
-                    <Link to="/register">
-                    {"Don't"} have an account? Register Now</Link>
-                </form>
-            </div>
-            <div className="imgContainer">
-                <img src="/public/assets/pics/Urban Hive.gif" alt="" />
-            </div>
-        </div>
-    )
+function LogIn() {
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true)
+    setError("")
+    const formData = new FormData(e.target);
+
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    try {
+      const res = await apiRequest.post("/auth/login", {
+        username,  
+        password,
+      });
+
+      localStorage.setItem("user", JSON.stringify(res.data))
+
+      navigate("/")
+
+      // navigate("/login");
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+    }finally{
+      setIsLoading(false)
+    }
+  };
+
+  return (
+    <div className="LogIn">
+      <div className="formContainer">
+        <form onSubmit={handleSubmit}>
+          <h1>Welcome Back</h1>
+          <input type="text" name="username" placeholder="Username" />
+          <input type="text" name="password" placeholder="Password" />
+          <button disabled={isLoading}>Log In</button>
+          {error && 
+          <span>
+            {error}
+          </span>}
+          <Link to="/register">{"Don't"} have an account? Register Now</Link>
+        </form>
+      </div>
+      <div className="imgContainer">
+        <img src="/public/assets/pics/Urban Hive.gif" alt="" />
+      </div>
+    </div>
+  );
 }
-export default LogIn
+export default LogIn;
