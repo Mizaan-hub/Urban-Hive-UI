@@ -2,17 +2,22 @@ import Chat from "../../components/Chat/Chat";
 import List from "../../components/List/List";
 import "./ProfilePage.scss";
 import apiRequest from "../../lib/apiRequest"
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function ProfilePage() {
 
   const navigate =  useNavigate()
+  const {updateUser} = useContext(AuthContext)
 
   const handleLogOut = async () => {
     try {
-      const res = apiRequest.post("/auth/logout")
+      const res = await apiRequest.post("/auth/logout")
       localStorage.removeItem("user")
       navigate("/")
+
+      updateUser(res.data)
     } 
     catch (error) {
       console.log(error);
