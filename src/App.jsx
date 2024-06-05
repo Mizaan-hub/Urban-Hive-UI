@@ -3,7 +3,7 @@ import{
   RouterProvider,
 }from "react-router-dom"
 import ListPage from './routes/ListPage/ListPage';
-import {Layout, RequireAuth } from './routes/Layout/Layout';
+import { Layout, RequireAuth } from './routes/Layout/Layout';
 import HomePage from './routes/HomePage/HomePage';
 import SinglePage from "./routes/SinglePage/SinglePage";
 import ProfilePage from "./routes/ProfilePage/ProfilePage";
@@ -21,7 +21,6 @@ function App() {
           path: "/",
           element: <HomePage/>
         },
-    
         {
           path: "/list",
           element: <ListPage/>
@@ -50,7 +49,6 @@ function App() {
         },
       ]
     }
-
   ]);
 
   return (

@@ -47,7 +47,7 @@ function Register() {
           {error &&<span>
             {error}
           </span> }
-          <Link to="/login">Already have an account? Register Now</Link>
+          <Link to="/login">Already have an account? Log In Now</Link>
         </form>
       </div>
       <div className="imgContainer">
