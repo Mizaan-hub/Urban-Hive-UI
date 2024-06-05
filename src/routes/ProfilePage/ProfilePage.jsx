@@ -9,15 +9,14 @@ import { AuthContext } from "../../context/AuthContext";
 function ProfilePage() {
 
   const navigate =  useNavigate()
-  const {updateUser} = useContext(AuthContext)
+  const {updateUser, currentUser} = useContext(AuthContext)
 
   const handleLogOut = async () => {
     try {
-      const res = await apiRequest.post("/auth/logout")
+      await apiRequest.post("/auth/logout")
       localStorage.removeItem("user")
       navigate("/")
-
-      updateUser(res.data)
+      updateUser(null)
     } 
     catch (error) {
       console.log(error);
@@ -34,13 +33,13 @@ function ProfilePage() {
           <div className="info">
             <span>
               Avatar:
-              <img src="/public/assets/pics/lana-profile-2.jpg" alt="" />
+              <img src={currentUser.avatar || "../../../public/assets/pics/noAvatar.png"} alt="" />
             </span>
             <span>
-              Username: <b>Lana Rhoades</b>
+              Username: <b>{currentUser.username}</b>
             </span>
             <span>
-              E-Mail: <b>lana69@gmail.com</b>
+              E-Mail: <b>{currentUser.email}</b>
             </span>
             <button onClick={handleLogOut}>Log Out</button>
           </div>

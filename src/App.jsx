@@ -3,7 +3,7 @@ import{
   RouterProvider,
 }from "react-router-dom"
 import ListPage from './routes/ListPage/ListPage';
-import Layout from './routes/Layout/Layout';
+import {Layout, RequireAuth } from './routes/Layout/Layout';
 import HomePage from './routes/HomePage/HomePage';
 import SinglePage from "./routes/SinglePage/SinglePage";
 import ProfilePage from "./routes/ProfilePage/ProfilePage";
@@ -31,10 +31,6 @@ function App() {
           element: <SinglePage/>
         },
         {
-          path:"/profile",
-          element:<ProfilePage/>
-        },
-        {
           path:"/login",
           element: <LogIn/>
         },
@@ -42,6 +38,16 @@ function App() {
           path:"/register",
           element: <Register/>
         }
+      ]
+    },
+    {
+      path:"/",
+      element:<RequireAuth/>,
+      children:[
+        {
+          path:"/profile",
+          element:<ProfilePage/>
+        },
       ]
     }
 
