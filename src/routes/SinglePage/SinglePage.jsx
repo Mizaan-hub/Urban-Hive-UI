@@ -1,30 +1,41 @@
 import Slider from "../../components/Slider/Slider";
 import Map from "../../components/Map/Map";
 import "./SinglePage.scss";
-import { singlePostData, userData } from "../../lib/dummydata";
+import { useLoaderData } from "react-router-dom";
+import DOMPurify from "dompurify"
 
 function SinglePage() {
+  const post = useLoaderData();
+
   return (
     <div className="SinglePage">
       <div className="details">
         <div className="wrapper">
-          <Slider images={singlePostData.images} />
+          <Slider images={post.images} />
           <div className="info">
             <div className="top">
               <div className="post">
-                <h1>{singlePostData.title}</h1>
+                <h1>{post.title}</h1>
                 <div className="address">
                   <img src="/public/assets/images/pin.png" alt="" />
-                  <span>{singlePostData.address}</span>
+                  <span>{post.address}</span>
                 </div>
-                <div className="price">£ {singlePostData.price}</div>
+                <div className="price">£ {post.price}</div>
               </div>
               <div className="user">
-                <img src={userData.img} alt="" />
-                <span>{userData.name}</span>
+                <img
+                  src={
+                    post.user.avatar ||
+                    "../../../public/assets/pics/noAvatar.jpg"
+                  }
+                  alt=""
+                />
+                <span>{post.user.username}</span>
               </div>
             </div>
-            <div className="bottom">{singlePostData.description}</div>
+            <div className="bottom" dangerouslySetInnerHTML={{__html : 
+              DOMPurify.sanitize(post.postDetail.desc),
+              }}></div>
           </div>
         </div>
       </div>
@@ -37,21 +48,29 @@ function SinglePage() {
               <img src="/public/assets/images/utility.png" alt="" />
               <div className="featureText">
                 <span>Utilities</span>
-                <p>Renter is responsible</p>
+                {post.postDetail.utilities === "owner" ? (
+                  <p>Owner is responsible</p>
+                ) : (
+                  <p>Tenant is responsible</p>
+                )}
               </div>
             </div>
             <div className="feature">
               <img src="/public/assets/images/pet.png" alt="" />
               <div className="featureText">
                 <span>Pet Policy</span>
-                <p>Pets are allowed</p>
+                {post.postDetail.pet === "allowed" ? (
+                  <p>Pets Allowed</p>
+                ):(
+                  <p>No Pets Allowed</p>
+                )}
               </div>
             </div>
             <div className="feature">
               <img src="/public/assets/images/fee.png" alt="" />
               <div className="featureText">
-                <span>Property fee</span>
-                <p>Must have 3X the rent in total household income</p>
+                <span>Income Policy</span>
+                <p>{post.postDetail.income}</p>
               </div>
             </div>
           </div>
@@ -59,15 +78,15 @@ function SinglePage() {
           <div className="sizes">
             <div className="size">
               <img src="/public/assets/images/size.png" alt="" />
-              <span>861sft</span>
+              <span>{post.postDetail.size} sft</span>
             </div>
             <div className="size">
               <img src="/public/assets/images/bed.png" alt="" />
-              <span>{singlePostData.bedRooms} beds</span>
+              <span>{post.bedroom} beds</span>
             </div>
             <div className="size">
               <img src="/public/assets/images/bath.png" alt="" />
-              <span>{singlePostData.bathroom} bathroom</span>
+              <span>{post.bathroom} bathroom</span>
             </div>
           </div>
           <p className="title">Nearby Places</p>
@@ -75,28 +94,28 @@ function SinglePage() {
             <div className="feature">
               <img src="/public/assets/images/school.png" alt="" />
               <div className="featureText">
-                <span>School</span>
-                <p>250m away</p>
+                <span>Schools</span>
+                <p>{post.postDetail.school}</p>
               </div>
             </div>
             <div className="feature">
               <img src="/public/assets/images/bus.png" alt="" />
               <div className="featureText">
-                <span>Bus Stop</span>
-                <p>100m away</p>
+                <span>Bus Stops</span>
+                <p>{post.postDetail.bus}</p>
               </div>
             </div>
             <div className="feature">
               <img src="/public/assets/images/restaurant.png" alt="" />
               <div className="featureText">
-                <span>Restaurant</span>
-                <p>200m away</p>
+                <span>Restaurants</span>
+                <p>{post.postDetail.restaurant}</p>
               </div>
             </div>
           </div>
           <p className="title">Location</p>
           <div className="mapContainer">
-            <Map items={[singlePostData]} />
+            <Map items={[post]} />
           </div>
           <div className="buttons">
             <button>

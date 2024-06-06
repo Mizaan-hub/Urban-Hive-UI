@@ -11,6 +11,7 @@ import LogIn from "./routes/LogIn/LogIn";
 import Register from "./routes/Register/Register";
 import ProfileUpdatePage from "./routes/ProfileUpdatePage/ProfileUpdatePage";
 import NewPostPage from "./routes/NewPostPage/NewPostPage";
+import { SinglePageLoader } from "./lib/loaders";
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
         },
         {
           path:"/:id",
-          element: <SinglePage/>
+          element: <SinglePage/>,
+          loader: SinglePageLoader
         },
         {
           path:"/login",
