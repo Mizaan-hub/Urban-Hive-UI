@@ -7,7 +7,7 @@ const types = ["buy", "rent"];
 function SearchBar() {
   const [query, setQuery] = useState({
     type: "buy",
-    location: "",
+    city: "",
     minPrice: "0",
     maxPrice: "0",
   });
@@ -57,7 +57,7 @@ function SearchBar() {
           onChange={handleChange}
         />
         <Link
-          to={`/list?type=${query.type}&city= ${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
+          to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
         >
           <button>
             <img src="/public/assets/images/search.png" alt="" />
