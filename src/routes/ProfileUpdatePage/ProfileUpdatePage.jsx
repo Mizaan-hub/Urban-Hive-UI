@@ -10,7 +10,7 @@ import UploadWidget from "../../components/uploadWidget/uploadWidget";
 function ProfileUpdatePage() {
   const { currentUser, updateUser } = useContext(AuthContext);
   const [error, setError] =useState("")
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const [avatar, setAvatar] = useState([]);
   const navigate =  useNavigate()
 
   const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ function ProfileUpdatePage() {
         username,
         email,
         password,
-        avatar
+        avatar: avatar[0]
       })
 
       updateUser(res.data)
@@ -70,7 +70,7 @@ function ProfileUpdatePage() {
       </div>
       <div className="sideContainer">
         <img
-          src={avatar || "../../../public/assets/pics/noAvatar.jpg"}
+          src={avatar[0] ||currentUser.avatar || "../../../public/assets/pics/noAvatar.jpg"}
           alt=""
           className="avatar"
         />
