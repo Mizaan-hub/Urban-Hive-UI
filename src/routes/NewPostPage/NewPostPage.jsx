@@ -82,11 +82,11 @@ function NewPostPage() {
             </div>
             <div className="item">
               <label htmlFor="bedroom">Bedroom Number</label>
-              <input min={0} type="Number" name="bedroom" id="bedroom" />
+              <input min={1} type="Number" name="bedroom" id="bedroom" />
             </div>
             <div className="item">
               <label htmlFor="bathroom">Bathroom Number</label>
-              <input min={0} type="Number" name="bathroom" id="bathroom" />
+              <input min={1} type="Number" name="bathroom" id="bathroom" />
             </div>
             <div className="item">
               <label htmlFor="longitude">Longitude</label>
