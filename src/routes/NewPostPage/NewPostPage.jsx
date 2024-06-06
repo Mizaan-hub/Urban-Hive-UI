@@ -4,6 +4,7 @@ function NewPostPage() {
   return (
     <div className="NewPostPage">
       <div className="formContainer">
+        <h1>Add New Post</h1>
         <div className="wrapper">
           <form>
             <div className="item">
@@ -20,7 +21,6 @@ function NewPostPage() {
             </div>
             <div className="item description">
               <label htmlFor="desc">Description</label>
-              <textarea name="desc" id="desc"></textarea>
             </div>
             <div className="item">
               <label htmlFor="city">City</label>

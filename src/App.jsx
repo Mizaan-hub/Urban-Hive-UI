@@ -10,6 +10,7 @@ import ProfilePage from "./routes/ProfilePage/ProfilePage";
 import LogIn from "./routes/LogIn/LogIn";
 import Register from "./routes/Register/Register";
 import ProfileUpdatePage from "./routes/ProfileUpdatePage/ProfileUpdatePage";
+import NewPostPage from "./routes/NewPostPage/NewPostPage";
 
 function App() {
 
@@ -51,6 +52,10 @@ function App() {
         {
           path:"/profile/update",
           element:<ProfileUpdatePage/>
+        },
+        {
+          path:"/add",
+          element:<NewPostPage/>
         }
       ]
     }

@@ -1,93 +1,87 @@
 @import "../../responsive.scss";
 
-.NewPostPage{
-    height: 100%;
-    display: flex;
+.NewPostPage {
+  height: 100%;
+  display: flex;
 
-    @include tablets{
-        flex-direction: column;
+  @include tablets{
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .formContainer {
+    flex: 3;
+    overflow: scroll;
+
+    &::-webkit-scrollbar{
+      width: 0px;
     }
 
-    .formContainer{
-        flex: 3;
-        overflow: scroll;
+    .wrapper {
+      margin: 30px 50px 100px 0px;
 
-        &::-webkit-scrollbar{
-            width: 0;
-        }
-
-        .wrapper{
-            margin: 30px 50px 100px 0px;
-
-            form{
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                gap: 20px;
-
-                .item{
-                    width: 30%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 5px;
-                }
-
-                label{
-                    font-weight: 400;
-                }
-
-                input{
-                    padding: 6px;
-                    border-radius: 5px;
-                    border: 1px solid gray;
-                }
-
-                select{
-                    padding: 6px;
-                }
-
-                &.description{
-                    width: 100%;
-                    height: 320px;
-
-                    .quill > .ql-container > .ql-editor{
-                        height: 200px;
-                        font-size: 16px;
-                    }
-                }
-            }
-
-            .sendButton{
-                width: 30%;
-                border-radius: 5px;
-                border: none;
-                background-color: teal;
-                color: white;
-                cursor: pointer;
-                font-weight: bold;
-                padding: 20px;
-            }
-        }
-    }
-
-    .sideContainer{
-
-        @include tablets{
-            margin-top: 50px;
-        }
-        flex: 2;
-        background-color: var(--color-right);
+      form {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
         gap: 20px;
-        align-items: center;
-        justify-content: center;
 
-        img{
-            width: 50%;
-            height: 180px;
-            object-fit: cover;
+        .item {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          label {
+          }
+
+          input {
+            padding: 20px;
             border-radius: 5px;
+            border: 1px solid gray;
+          }
+
+          select {
+            padding: 19px;
+          }
+
+          &.description {
+            width: 100%;
+            height: 320px;
+
+            .quill > .ql-container > .ql-editor {
+              height: 200px;
+              font-size: 16px;
+            }
+          }
         }
+        .sendButton {
+          width: 30%;
+          border-radius: 5px;
+          border: none;
+          background-color: teal;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
     }
+  }
+
+  .sideContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
 }
