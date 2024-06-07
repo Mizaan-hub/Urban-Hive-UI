@@ -5,7 +5,6 @@ import apiRequest from "../../lib/apiRequest"
 import { Await, Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Suspense, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Card from "../../components/Card/Card";
 
 function ProfilePage() {
 
