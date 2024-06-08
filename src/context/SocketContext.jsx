@@ -6,7 +6,7 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:80085"))
+    setSocket(io("http://localhost:8008"))
   }, [])
 
   return(
