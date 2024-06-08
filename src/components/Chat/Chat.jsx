@@ -4,11 +4,15 @@ import { AuthContext } from "../../context/AuthContext";
 import ApiRequest from "../../lib/apiRequest";
 import { format } from "timeago.js";
 import { SocketContext } from "../../context/SocketContext";
+import { useNotificationStore } from "../../lib/notificationStore.js";
 
 function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { socket } = useContext(SocketContext);
+
+  const decrease = useNotificationStore(state => state.decrease)
+
 
   const messageEndRef = useRef()
 
@@ -20,6 +24,9 @@ function Chat({ chats }) {
   const handleOpenChat = async (id, receiver) => {
     try {
       const res = await ApiRequest("/chats/" + id);
+      if(!res.data.seenBy.includes(currentUser.id)){
+        decrease()
+      }
       setChat({ ...res.data, receiver });
     } catch (error) {
       console.log(error);

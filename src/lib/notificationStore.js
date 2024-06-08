@@ -12,5 +12,5 @@ export const useNotificationStore = create((set) => ({
   },
   reset: () => {
     set({ number: 0 });
-  }
+  },
 }));
