@@ -1,12 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./Chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import ApiRequest from "../../lib/apiRequest";
 import { format } from "timeago.js";
+import { SocketContext } from "../../context/SocketContext";
 
 function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);
+  const { socket } = useContext(SocketContext);
+
+  const messageEndRef = useRef()
+
+  useEffect(() => {
+    messageEndRef.current?.scrollIntoView({ behavior: "instant" })
+
+  }, [chat])
 
   const handleOpenChat = async (id, receiver) => {
     try {
@@ -29,10 +38,35 @@ function Chat({ chats }) {
       });
       setChat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
       e.target.reset();
+      socket.emit("sendMessage", {
+        receiverId: chat.receiver.id,
+        data: res.data,
+      });  
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    const read = async () => {
+      try {
+        await ApiRequest.put("/chats/read/" + chat.id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (chat && socket) {
+      socket.on("getMessage", (data) => {
+        if (chat.id === data.chatId) {
+          setChat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
+          read();
+        }
+      });
+    }
+    return () => {
+      socket.off("getMessage");
+    };
+  }, [socket, chat]);
 
   return (
     <div className="Chat">
@@ -64,26 +98,26 @@ function Chat({ chats }) {
           <p>Lorem ipsum dolor sit amet.</p>
         </div> */}
 
-        {chats?.map((chat) => (
+        {chats?.map((c) => (
           <div
             className="message"
-            key={chat.id}
+            key={c.id}
             style={{
-              backgroundColor: chat.seenBy.includes(currentUser.id)
+              backgroundColor: c.seenBy.includes(currentUser.id) || chat?.id === c.id
                 ? "white"
                 : "#fecd514e",
             }}
-            onClick={() => handleOpenChat(chat.id, chat.receiver)}
+            onClick={() => handleOpenChat(c.id, c.receiver)}
           >
             <img
               src={
-                chat.receiver.avatar ||
+                c.receiver.avatar ||
                 "../../../public/assets/pics/noAvatar.jpg"
               }
               alt=""
             />
-            <span>{chat.receiver.username}</span>
-            <p>{chat.lastMessage}</p>
+            <span>{c.receiver.username}</span>
+            <p>{c.lastMessage}</p>
           </div>
         ))}
       </div>
@@ -160,6 +194,9 @@ function Chat({ chats }) {
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               <span>1 hour ago</span>
             </div> */}
+
+            <div ref={messageEndRef}></div>
+            
           </div>
           <form onSubmit={handleSubmit} className="bottom">
             <textarea name="text"></textarea>
