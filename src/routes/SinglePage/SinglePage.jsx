@@ -31,6 +31,36 @@ function SinglePage() {
     }
   }
 
+  const handleSendMessage = async () => {
+    if(!currentUser){
+      navigate('/login')
+      }
+
+      const receiverId = post.user.id
+
+
+      try {
+        if(currentUser.id === receiverId){
+          alert("You can't send message to yourself")
+          console.log(currentUser.id, receiverId);
+        }
+
+        const existingChat = await ApiRequest.get(`/chats?receiverId=${receiverId}`)
+
+        if(existingChat){
+          navigate("/profile")
+        }else(
+          await ApiRequest.post("/chats" , {
+            receiverId,
+          })
+        )
+        navigate("/profile")
+      } 
+      catch (error) {
+        console.log(error);
+      }
+  }
+
   return (
     <div className="SinglePage">
       <div className="details">
@@ -142,7 +172,7 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button>
+            <button onClick={handleSendMessage}>
               <img src="/public/assets/images/chat.png" alt="" />
               Send a message
             </button>
