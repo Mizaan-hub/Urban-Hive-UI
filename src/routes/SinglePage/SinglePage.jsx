@@ -45,15 +45,15 @@ function SinglePage() {
           console.log(currentUser.id, receiverId);
         }
 
-        const existingChat = await ApiRequest.get(`/chats?receiverId=${receiverId}`)
+        // const existingChat = await ApiRequest.get(`/chats?receiverId=${receiverId}`)
 
-        if(existingChat){
-          navigate("/profile")
-        }else(
+        // if(existingChat){
+        //   navigate("/profile")
+        // }else(
           await ApiRequest.post("/chats" , {
             receiverId,
           })
-        )
+        // )
         navigate("/profile")
       } 
       catch (error) {
